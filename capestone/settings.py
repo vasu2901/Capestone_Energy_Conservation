@@ -39,6 +39,14 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "capestoneapp",
 ]
+STATIC_URL = '/static/'  # URL for serving static files
+
+# Add the 'static' directories where Django will search for static files
+STATICFILES_DIRS = [
+    BASE_DIR / "static",  # Directory for any global/static files
+]
+
+STATIC_ROOT = BASE_DIR / 'staticfiles'
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
@@ -115,8 +123,6 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
-
-STATIC_URL = "static/"
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field

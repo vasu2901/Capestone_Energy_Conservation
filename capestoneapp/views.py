@@ -7,6 +7,9 @@ import numpy as np
 
 global_df = None
 
+def home(request):
+    return render(request, "index.html")
+
 
 def read_data(request):
     global global_df
@@ -51,12 +54,12 @@ def read_data(request):
 
         return render(
             request,
-            "index.html",
+            "index2.html",
             {"table": data_html, "columns": global_df.columns},
         )
 
     except Exception as e:
-        return render(request, "index.html", {"error": str(e)})
+        return render(request, "index2.html", {"error": str(e)})
 
 
 def model(request):
@@ -146,12 +149,12 @@ def model(request):
 
         return render(
             request,
-            "index.html",
+            "index2.html",
             {"table": result_html, "columns": result_2024.columns},
         )
 
     except Exception as e:
-        return render(request, "index.html", {"error": str(e)})
+        return render(request, "index2.html", {"error": str(e)})
 
 
 def contactus(request):
