@@ -2,6 +2,27 @@
 {% block title %}Home Page{% endblock %}
 <{% block content %}>
   {% load static %}
+  <style>
+    .person img {
+      width: 150px;
+      height: 150px;
+      object-fit: cover; 
+      border-radius: 50%;
+      transition: transform 0.3s ease-in-out; 
+    }
+
+    .person:hover img {
+      transform: scale(1.05); 
+    }
+
+    .person {
+      height: 100%; 
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+    }
+  </style>
 
   <div class="site-wrap">
 
@@ -99,8 +120,6 @@
         </div>
       </div>
     </section>
-
-
 
     <section class="site-section">
       <div class="container">
@@ -543,18 +562,13 @@
         <div class="row my-2">
           <div class="col-md-6 col-lg-4 mb-5 mb-lg-0" data-aos="fade" data-aos-delay="100">
             <div class="person text-center bg-white p-4">
-              <img src="{% static 'capestoneapp/images/person_2.jpg' %}" alt="Image"
+              <img src="{% static 'capestoneapp/images/dipti.jpg' %}" alt="Image"
                 class="img-fluid rounded-circle mb-3">
               <h3>Dipti Mahakalkar</h3>
-              <p class="position text-muted">Co-Founder, President</p>
-              <p class="mb-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi at consequatur unde
-                molestiae quidem provident voluptatum deleniti quo iste error eos est praesentium distinctio cupiditate
-                tempore suscipit inventore deserunt tenetur.</p>
+              <p class="position text-muted">Front end Developer</p>
+              <p class="mb-4">I have worked on various projects and have a good understanding of front end development. I have worked on the frontend of the application. I have also worked on the research paper of the application which was presented in the conference.</p>
               <ul class="ul-social-circle">
-                <li><a href="#"><span class="icon-facebook"></span></a></li>
-                <li><a href="#"><span class="icon-twitter"></span></a></li>
-                <li><a href="#"><span class="icon-linkedin"></span></a></li>
-                <li><a href="#"><span class="icon-instagram"></span></a></li>
+                <li><a href="https://www.linkedin.com/in/dipti-mahakalkar/"><span class="icon-linkedin"></span></a></li>
               </ul>
             </div>
           </div>
