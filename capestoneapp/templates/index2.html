@@ -1,28 +1,6 @@
-<!DOCTYPE html>
-<html>
+{% extends 'layout.html' %}
 
-<head>
-    <title>Energy Generation Table</title>
-    <style>
-        table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-
-        th,
-        td {
-            border: 1px solid black;
-            padding: 8px;
-            text-align: left;
-        }
-
-        th {
-            background-color: #f2f2f2;
-        }
-    </style>
-</head>
-
-<body>
+{% block content %}
 
     <h1>Energy Generation Data</h1>
 
@@ -32,6 +10,5 @@
     {{ table|safe }} <!-- Ensure the table renders properly -->
     {% endif %}
 
-</body>
+{% endblock %}
 
-</html>
