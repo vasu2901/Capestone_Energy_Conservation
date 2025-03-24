@@ -6,5 +6,5 @@ urlpatterns = [
     path("", views.home, name="app"),
     path("home/", views.read_data, name="read_data"),
     path("predict/", views.model, name="predict"),
-    path("contactus/", views.contactus, name="contactus"),
+    path("analysis/", views.data_for_state, name="analysis"),
 ]
