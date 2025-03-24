@@ -43,7 +43,8 @@ STATIC_URL = '/static/'  # URL for serving static files
 
 # Add the 'static' directories where Django will search for static files
 STATICFILES_DIRS = [
-    BASE_DIR / "static",  # Directory for any global/static files
+    BASE_DIR / "static",
+    "/var/www/static/",
 ]
 
 STATIC_ROOT = BASE_DIR / 'staticfiles'
