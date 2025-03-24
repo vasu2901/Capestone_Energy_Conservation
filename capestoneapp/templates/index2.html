@@ -18,8 +18,7 @@
             <div class="row align-items-center">
 
                 <div class="col-11 col-xl-2">
-                    <h1 class="mb-0 site-logo"><a href="index.html" class="mb-0">Strategy<span
-                                class="text-primary">.</span>
+                    <h1 class="mb-0 site-logo"><a href="/" class="mb-0">Capestone<span class="text-primary">.</span>
                         </a></h1>
                 </div>
                 <div class="col-12 col-md-10 d-none d-xl-block">
@@ -42,16 +41,99 @@
         </div>
 
     </header>
-    <div class="site-section">
-        <div class="container-fluid mx-auto">
-            <h1>Energy Generation Data</h1>
+    <div class="site-block-tab mt-n-2">
+        <div class="container">
+            {% if page_type == "home" %}
+            <section class="site-section" id="work-section">
+                <div class="container mt-5 mb-n-5">
+                    <form method="get" action="{% url 'analysis' %}" class="container-fluid">
+                        <label for=" state-select"><strong>Select a State for In-depth Analysis:</strong></label>
+                        <select name="state" id="state-select" class="form-control w-auto d-inline-block mx-2">
+                            <option value="">-- Select State --</option>
+                            <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
+                            <option value="Andhra Pradesh">Andhra Pradesh</option>
+                            <option value="Arunachal Pradesh">Arunachal Pradesh</option>
+                            <option value="Assam">Assam</option>
+                            <option value="Bihar">Bihar</option>
+                            <option value="Chandigarh">Chandigarh</option>
+                            <option value="Chhattisgarh">Chhattisgarh</option>
+                            <option value="Dadra and Nagar Haveli and Daman and Diu">Dadra and Nagar Haveli and Daman
+                                and
+                                Diu
+                            </option>
+                            <option value="Delhi">Delhi</option>
+                            <option value="Goa">Goa</option>
+                            <option value="Gujarat">Gujarat</option>
+                            <option value="Haryana">Haryana</option>
+                            <option value="Himachal Pradesh">Himachal Pradesh</option>
+                            <option value="Jammu and Kashmir">Jammu and Kashmir</option>
+                            <option value="Jharkhand">Jharkhand</option>
+                            <option value="Karnataka">Karnataka</option>
+                            <option value="Kerala">Kerala</option>
+                            <option value="Lakshadweep">Lakshadweep</option>
+                            <option value="Madhya Pradesh">Madhya Pradesh</option>
+                            <option value="Maharashtra">Maharashtra</option>
+                            <option value="Manipur">Manipur</option>
+                            <option value="Meghalaya">Meghalaya</option>
+                            <option value="Mizoram">Mizoram</option>
+                            <option value="Nagaland">Nagaland</option>
+                            <option value="Odisha">Odisha</option>
+                            <option value="Others">Others</option>
+                            <option value="Puducherry">Puducherry</option>
+                            <option value="Punjab">Punjab</option>
+                            <option value="Rajasthan">Rajasthan</option>
+                            <option value="Sikkim">Sikkim</option>
+                            <option value="Tamil Nadu">Tamil Nadu</option>
+                            <option value="Telangana">Telangana</option>
+                            <option value="Tripura">Tripura</option>
+                            <option value="Uttar Pradesh">Uttar Pradesh</option>
+                            <option value="Uttarakhand">Uttarakhand</option>
+                            <option value="West Bengal">West Bengal</option>
+                            <option value="Ladakh">Ladakh</option>
 
-            {% if error %}
-            <p style="color: red;">Error: {{ error }}</p>
+                        </select>
+                        <button type="submit" class="btn btn-primary">Analyze</button>
+                    </form>
+                </div>
+            </section>
             {% else %}
-            {{ table|safe }} 
+            <section class="site-section-sm"></section>
             {% endif %}
         </div>
+        <div class="site-section">
+            <div class="container">
+                {% if page_type == "home" %}
+                <h1>The Complete Data</h1>
+                {% elif page_type == "predict" %}
+                <h1>Prediction for year 2025-26</h1>
+                {% else %}
+                <h1>Analysis for state : {{state}}</h1>
+                {% endif %}
+                {% if error %}
+                <p style="color: red;">Error: {{ error }}</p>
+                {% else %}
+                {{ table|safe }} <!-- Ensure the table renders properly -->
+                {% endif %}
+            </div>
+        </div>
+        {% if page_type == "analytics" and charts %}
+        <div class="site-section">
+            <div class="container">
+                <h2>Charts for {{ state }}</h2>
+                <div class="row">
+                    {% for chart in charts %}
+                    <div class="col-md-6 mb-5 text-center">
+                        <h4>Year: {{ chart.year }}</h4>
+                        <img src="data:image/png;base64,{{ chart.chart }}" class="img-fluid" style="max-height: 400px;"
+                            alt="Chart for {{ chart.year }}">
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        {% endif %}
+
+
     </div>
 </div>
 <script src="{% static 'capestoneapp/js/jquery-3.3.1.min.js' %}"></script>
